@@ -1,0 +1,5 @@
+---
+- hosts: tag_Name_oddshare_nginx
+  become: true
+  roles:
+    - nginx

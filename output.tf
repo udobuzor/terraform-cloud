@@ -10,4 +10,7 @@ output "rds_endpoint" {
 output "efs_id" {
   value = module.EFS.efs_id
 }
+output "internal_alb_dns" {
+  value = module.ALB.internal_alb_dns_name
+}
 

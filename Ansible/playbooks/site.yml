@@ -1,0 +1,15 @@
+---
+- hosts: tag_Name_oddshare_nginx
+  become: true
+  roles:
+    - nginx
+
+- hosts: tag_Name_oddshare_tooling
+  become: true
+  roles:
+    - tooling
+
+- hosts: tag_Name_oddshare_wordpress
+  become: true
+  roles:
+    - webserver

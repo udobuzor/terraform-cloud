@@ -1,0 +1,26 @@
+---
+- name: Install PyMySQL
+  pip:
+    name: pymysql
+    state: present
+
+- name: create database
+  community.mysql.mysql_db:
+    login_host: "{{ rds_endpoint }}"
+    login_user: "{{ db_username }}"
+    login_password: "{{ db_password }}"
+    name: "{{ wordpress_db_name }}"
+    collation: utf8_general_ci
+    encoding: utf8
+    state: present
+
+- name: Input wordpress credentials
+  ansible.builtin.replace:
+    path: /var/www/html/wp-config.php
+    regexp: "{{ item.regexp }}"
+    replace: "{{ item.line }}"
+  loop:
+    - { regexp: '^localhost', line: "{{ rds_endpoint }}" }
+    - { regexp: '^username_here', line: "{{ db_username }}" }
+    - { regexp: '^database_name_here', line: "{{ wordpress_db_name }}" }
+    - { regexp: '^password_here', line: "{{ db_password }}" }

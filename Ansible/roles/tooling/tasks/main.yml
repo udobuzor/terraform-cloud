@@ -1,0 +1,45 @@
+---
+- name: mounting EFS share
+  ansible.posix.mount:
+    path: /var/www
+    src: "{{ efs_filesystem_id }}:/"
+    fstype: efs
+    opts: "nosuid,noexec,defaults,tls,accesspoint={{ tooling_access_point_id }}"
+    state: mounted
+
+- name: install httpd on the webserver
+  ansible.builtin.yum:
+    name: "httpd"
+    state: present
+
+- name: install PHP
+  ansible.builtin.yum:
+    name:
+      - php
+      - php-mysqlnd
+      - php-gd
+      - php-curl
+      - php-common
+      - php-fpm
+      - php-mbstring
+      - php-opcache
+      - php-xml
+      - php-intl
+      - php-json
+    state: present
+
+- name: ensure php-fpm is started and enabled
+  ansible.builtin.service:
+    name: php-fpm
+    state: started
+    enabled: yes
+  notify: Restart php-fpm
+
+- import_tasks: setup-site.yml
+- import_tasks: setup-db.yml
+
+- name: ensure httpd is started and enabled
+  ansible.builtin.service:
+    name: httpd
+    state: started
+    enabled: yes

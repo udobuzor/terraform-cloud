@@ -1,0 +1,22 @@
+---
+- name: Install PyMySQL
+  pip:
+    name: pymysql
+    state: present
+
+- name: create database
+  community.mysql.mysql_db:
+    login_host: "{{ rds_endpoint }}"
+    login_user: "{{ db_username }}"
+    login_password: "{{ db_password }}"
+    name: "{{ tooling_db_name }}"
+    collation: utf8_general_ci
+    encoding: utf8
+    state: present
+
+- name: Input tooling credentials
+  ansible.builtin.replace:
+    path: /var/www/html/functions.php
+    path: /var/www/html/functions.php
+    regexp: "mysqli_connect\\('mysql\\.tooling\\.svc\\.cluster\\.local', 'admin', 'admin', 'tooling'\\)"
+    replace: "mysqli_connect('{{ rds_endpoint }}', '{{ db_username }}', '{{ db_password }}', '{{ tooling_db_name }}')"
