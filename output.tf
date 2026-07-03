@@ -4,14 +4,10 @@ output "alb_dns_name" {
 output "alb_target_group_arn" {
   value = module.ALB.nginx_target_group_arn
 }
-output "s3_bucket_arn" {
-  value       = aws_s3_bucket.terraform_state.arn
-  description = "The ARN of the S3 bucket"
+output "rds_endpoint" {
+  value = module.RDS.rds_endpoint
 }
-
-output "dynamodb_table_name" {
-  value       = aws_dynamodb_table.terraform_locks.name
-  description = "The name of the DynamoDB table"
+output "efs_id" {
+  value = module.EFS.efs_id
 }
-
 

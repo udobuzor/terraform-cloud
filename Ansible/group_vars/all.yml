@@ -1,0 +1,13 @@
+---
+rds_endpoint: "REPLACE_WITH_TERRAFORM_OUTPUT_rds_endpoint"
+db_username: "admin"
+db_password: "REPLACE_WITH_YOUR_REAL_MASTER_PASSWORD"
+
+wordpress_db_name: "wordpressdb"
+tooling_db_name: "toolingdb"
+
+efs_filesystem_id: "REPLACE_WITH_TERRAFORM_OUTPUT_efs_id"
+wordpress_access_point_id: "REPLACE_WITH_YOUR_WORDPRESS_ACCESS_POINT_ID"
+tooling_access_point_id: "REPLACE_WITH_YOUR_TOOLING_ACCESS_POINT_ID"
+
+internal_alb_dns: "REPLACE_WITH_TERRAFORM_OUTPUT_internal_alb_dns"

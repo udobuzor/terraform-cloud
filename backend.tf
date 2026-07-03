@@ -3,7 +3,7 @@ terraform {
     organization = "oddshare-infra"
 
     workspaces {
-      name = "your-workspace-name"
+      name = "terraform-cloud"
     }
   }
 }

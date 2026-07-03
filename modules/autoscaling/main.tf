@@ -76,7 +76,7 @@ resource "aws_launch_template" "bastion-launch-template" {
 
   tag_specifications {
     resource_type = "instance"
-    tags          = merge(var.tags, { Name = "bastion-launch-template" })
+    tags          = merge(var.tags, { Name = "oddshare-bastion" })
   }
 
   user_data = filebase64("${path.module}/bastion.sh")
@@ -98,7 +98,7 @@ resource "aws_autoscaling_group" "bastion-asg" {
 
   tag {
     key                 = "Name"
-    value               = "bastion-launch-template"
+    value               = "oddshare-bastion"
     propagate_at_launch = true
   }
 }
@@ -123,7 +123,7 @@ resource "aws_launch_template" "nginx-launch-template" {
 
   tag_specifications {
     resource_type = "instance"
-    tags          = merge(var.tags, { Name = "nginx-launch-template" })
+    tags          = merge(var.tags, { Name = "oddshare-nginx" })
   }
 
   user_data = filebase64("${path.module}/nginx.sh")
@@ -145,7 +145,7 @@ resource "aws_autoscaling_group" "nginx-asg" {
 
   tag {
     key                 = "Name"
-    value               = "nginx-launch-template"
+    value               = "oddshare-nginx"
     propagate_at_launch = true
   }
 }
@@ -190,7 +190,7 @@ resource "aws_launch_template" "wordpress-launch-template" {
 
   tag_specifications {
     resource_type = "instance"
-    tags          = merge(var.tags, { Name = "wordpress-launch-template" })
+    tags          = merge(var.tags, { Name = "oddshare-wordpress" })
   }
 
   user_data = filebase64("${path.module}/wordpress.sh")
@@ -212,7 +212,7 @@ resource "aws_autoscaling_group" "wordpress-asg" {
 
   tag {
     key                 = "Name"
-    value               = "wordpress-asg"
+    value               = "oddshare-wordpress"
     propagate_at_launch = true
   }
 }
@@ -244,7 +244,7 @@ resource "aws_launch_template" "tooling-launch-template" {
 
   tag_specifications {
     resource_type = "instance"
-    tags          = merge(var.tags, { Name = "tooling-launch-template" })
+    tags          = merge(var.tags, { Name = "oddshare-tooling" })
   }
 
   user_data = filebase64("${path.module}/tooling.sh")
@@ -266,7 +266,7 @@ resource "aws_autoscaling_group" "tooling-asg" {
 
   tag {
     key                 = "Name"
-    value               = "tooling-launch-template"
+    value               = "oddshare-tooling"
     propagate_at_launch = true
   }
 }
