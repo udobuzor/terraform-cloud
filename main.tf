@@ -32,7 +32,10 @@ module "ALB" {
 module "autoscaling" {
   source = "./modules/autoscaling"
 
-  ami                        = var.ami
+  bastion_ami                = var.bastion_ami
+  nginx_ami                  = var.nginx_ami
+  wordpress_ami              = var.wordpress_ami
+  tooling_ami                = var.tooling_ami
   keypair                    = var.keypair
   bastion_sg_id              = module.security.bastion_sg_id
   nginx_sg_id                = module.security.nginx_sg_id

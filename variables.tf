@@ -30,9 +30,24 @@ variable "tags" {
 variable "preferred_number_of_private_subnets" {
   default = 4
 }
-variable "ami" {
+variable "bastion_ami" {
   type        = string
-  description = "AMI ID for the launch template"
+  description = "AMI ID for bastion host"
+}
+
+variable "nginx_ami" {
+  type        = string
+  description = "AMI ID for nginx reverse proxy"
+}
+
+variable "wordpress_ami" {
+  type        = string
+  description = "AMI ID for wordpress servers"
+}
+
+variable "tooling_ami" {
+  type        = string
+  description = "AMI ID for tooling servers"
 }
 variable "keypair" {
   type        = string

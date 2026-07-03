@@ -13,3 +13,6 @@ output "tooling_target_group_arn" {
 output "ext_alb_zone_id" {
   value = aws_lb.ext-alb.zone_id
 }
+output "internal_alb_dns_name" {
+  value = aws_lb.ialb.dns_name
+}
