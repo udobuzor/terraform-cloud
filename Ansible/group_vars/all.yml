@@ -1,13 +1,13 @@
 ---
-rds_endpoint: "REPLACE_WITH_TERRAFORM_OUTPUT_rds_endpoint"
+rds_endpoint: "terraform-c5dcffadbdf04501c7b2ea8.cshyyameye6y.us-east-1.rds.amazonaws.com:3306"
 db_username: "admin"
-db_password: "REPLACE_WITH_YOUR_REAL_MASTER_PASSWORD"
+db_password: "udobuzor!"
 
 wordpress_db_name: "wordpressdb"
 tooling_db_name: "toolingdb"
 
-efs_filesystem_id: "REPLACE_WITH_TERRAFORM_OUTPUT_efs_id"
-wordpress_access_point_id: "REPLACE_WITH_YOUR_WORDPRESS_ACCESS_POINT_ID"
-tooling_access_point_id: "REPLACE_WITH_YOUR_TOOLING_ACCESS_POINT_ID"
+efs_filesystem_id: "fs-01e5939a0cda55b8e"
+wordpress_access_point_id: "fsap-0523e8ff1bf1c951e"
+tooling_access_point_id: "fsap-021604175f1da1123"
 
-internal_alb_dns: "REPLACE_WITH_TERRAFORM_OUTPUT_internal_alb_dns"
+internal_alb_dns: "internal-int-alb-107602460.us-east-1.elb.amazonaws.com"
